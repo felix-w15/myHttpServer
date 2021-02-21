@@ -9,5 +9,7 @@
 
 
 void handle_for_sigpipe();
+int setSocketNonBlocking(int fd);
+
 
 #endif //MYHTTPSERVER_UTIL_H
