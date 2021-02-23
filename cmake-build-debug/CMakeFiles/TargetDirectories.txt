@@ -1,0 +1,3 @@
+/home/wx/CLionProjects/myHttpServer_/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/wx/CLionProjects/myHttpServer_/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/wx/CLionProjects/myHttpServer_/cmake-build-debug/CMakeFiles/myHttpServer_.dir
