@@ -16,10 +16,11 @@ void handle_for_sigpipe(){
     memset(&sa, '\0', sizeof(sa));
     sa.sa_flags = 0;
     sa.sa_handler = SIG_IGN;
-    assert(sigaction(SIGPIPE, &sa, NULL) != 0);
+    if(sigaction(SIGPIPE, &sa, NULL) != 0)
+        return;
 }
 
-void setSocketNonBlocking(int fd){
+int setSocketNonBlocking(int fd){
     int flag = fcntl(fd, F_GETFL, 0);
     if(flag == -1) return -1;
     if(fcntl(fd, F_SETFL, flag | O_NONBLOCK) == -1) return -1;

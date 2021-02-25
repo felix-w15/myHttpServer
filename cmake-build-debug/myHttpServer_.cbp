@@ -82,7 +82,31 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/wx/CLionProjects/myHttpServer_/Epoll.cpp">
+			<Option target="myHttpServer_"/>
+		</Unit>
+		<Unit filename="/home/wx/CLionProjects/myHttpServer_/Epoll.h">
+			<Option target="myHttpServer_"/>
+		</Unit>
+		<Unit filename="/home/wx/CLionProjects/myHttpServer_/ThreadPool.cpp">
+			<Option target="myHttpServer_"/>
+		</Unit>
+		<Unit filename="/home/wx/CLionProjects/myHttpServer_/ThreadPool.h">
+			<Option target="myHttpServer_"/>
+		</Unit>
 		<Unit filename="/home/wx/CLionProjects/myHttpServer_/main.cpp">
+			<Option target="myHttpServer_"/>
+		</Unit>
+		<Unit filename="/home/wx/CLionProjects/myHttpServer_/requestData.cpp">
+			<Option target="myHttpServer_"/>
+		</Unit>
+		<Unit filename="/home/wx/CLionProjects/myHttpServer_/requestData.h">
+			<Option target="myHttpServer_"/>
+		</Unit>
+		<Unit filename="/home/wx/CLionProjects/myHttpServer_/util.cpp">
+			<Option target="myHttpServer_"/>
+		</Unit>
+		<Unit filename="/home/wx/CLionProjects/myHttpServer_/util.h">
 			<Option target="myHttpServer_"/>
 		</Unit>
 		<Unit filename="/home/wx/CLionProjects/myHttpServer_/CMakeLists.txt">

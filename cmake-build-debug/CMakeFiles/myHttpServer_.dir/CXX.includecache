@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/wx/CLionProjects/myHttpServer_/util.cpp
+util.h
+/home/wx/CLionProjects/myHttpServer_/util.h
+signal.h
+-
+cstring
+-
+vector
+-
+assert.h
+-
+fcntl.h
+-
+errno.h
+-
+unistd.h
+-
+
+/home/wx/CLionProjects/myHttpServer_/util.h
+cstdlib
+-
+

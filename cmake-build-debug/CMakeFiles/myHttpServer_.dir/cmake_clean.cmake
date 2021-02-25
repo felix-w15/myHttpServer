@@ -1,5 +1,9 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/myHttpServer_.dir/Epoll.cpp.o"
+  "CMakeFiles/myHttpServer_.dir/ThreadPool.cpp.o"
   "CMakeFiles/myHttpServer_.dir/main.cpp.o"
+  "CMakeFiles/myHttpServer_.dir/requestData.cpp.o"
+  "CMakeFiles/myHttpServer_.dir/util.cpp.o"
   "myHttpServer_"
   "myHttpServer_.pdb"
 )

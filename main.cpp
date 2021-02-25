@@ -24,6 +24,7 @@ const std::string PATH = "/";
 
 extern std::priority_queue<std::shared_ptr<mytimer>, std::deque<std::shared_ptr<mytimer>>, timerCmp> myTimerQueue;
 
+using namespace std;
 
 
 void handle_expired_event(){
@@ -90,7 +91,7 @@ int main(){
         perror("socket bind failed");
         return 1;
     }
-    if(setSocketNonBlocking(listen_fd) < =){
+    if(setSocketNonBlocking(listen_fd) < 0){
         perror("set socket non block failed");
         return 1;
     }

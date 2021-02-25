@@ -123,9 +123,12 @@ struct timerCmp
 class MutexLockGuard{
 public:
     explicit  MutexLockGuard();
-    MutexLockGuard(const MutexLockGuard&) = delete;
-    MutexLockGuard& operator=(const MutexLockGuard&) = delete;
     ~MutexLockGuard();
+
+private:
+    MutexLockGuard(const MutexLockGuard&);
+    MutexLockGuard& operator=(const MutexLockGuard&);
+
 
 private:
     static pthread_mutex_t lock;

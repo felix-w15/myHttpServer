@@ -143,6 +143,60 @@ myHttpServer_/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/myHttpServer_.dir/build.make CMakeFiles/myHttpServer_.dir/build
 .PHONY : myHttpServer_/fast
 
+Epoll.o: Epoll.cpp.o
+
+.PHONY : Epoll.o
+
+# target to build an object file
+Epoll.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/myHttpServer_.dir/build.make CMakeFiles/myHttpServer_.dir/Epoll.cpp.o
+.PHONY : Epoll.cpp.o
+
+Epoll.i: Epoll.cpp.i
+
+.PHONY : Epoll.i
+
+# target to preprocess a source file
+Epoll.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/myHttpServer_.dir/build.make CMakeFiles/myHttpServer_.dir/Epoll.cpp.i
+.PHONY : Epoll.cpp.i
+
+Epoll.s: Epoll.cpp.s
+
+.PHONY : Epoll.s
+
+# target to generate assembly for a file
+Epoll.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/myHttpServer_.dir/build.make CMakeFiles/myHttpServer_.dir/Epoll.cpp.s
+.PHONY : Epoll.cpp.s
+
+ThreadPool.o: ThreadPool.cpp.o
+
+.PHONY : ThreadPool.o
+
+# target to build an object file
+ThreadPool.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/myHttpServer_.dir/build.make CMakeFiles/myHttpServer_.dir/ThreadPool.cpp.o
+.PHONY : ThreadPool.cpp.o
+
+ThreadPool.i: ThreadPool.cpp.i
+
+.PHONY : ThreadPool.i
+
+# target to preprocess a source file
+ThreadPool.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/myHttpServer_.dir/build.make CMakeFiles/myHttpServer_.dir/ThreadPool.cpp.i
+.PHONY : ThreadPool.cpp.i
+
+ThreadPool.s: ThreadPool.cpp.s
+
+.PHONY : ThreadPool.s
+
+# target to generate assembly for a file
+ThreadPool.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/myHttpServer_.dir/build.make CMakeFiles/myHttpServer_.dir/ThreadPool.cpp.s
+.PHONY : ThreadPool.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -170,6 +224,60 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/myHttpServer_.dir/build.make CMakeFiles/myHttpServer_.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+requestData.o: requestData.cpp.o
+
+.PHONY : requestData.o
+
+# target to build an object file
+requestData.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/myHttpServer_.dir/build.make CMakeFiles/myHttpServer_.dir/requestData.cpp.o
+.PHONY : requestData.cpp.o
+
+requestData.i: requestData.cpp.i
+
+.PHONY : requestData.i
+
+# target to preprocess a source file
+requestData.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/myHttpServer_.dir/build.make CMakeFiles/myHttpServer_.dir/requestData.cpp.i
+.PHONY : requestData.cpp.i
+
+requestData.s: requestData.cpp.s
+
+.PHONY : requestData.s
+
+# target to generate assembly for a file
+requestData.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/myHttpServer_.dir/build.make CMakeFiles/myHttpServer_.dir/requestData.cpp.s
+.PHONY : requestData.cpp.s
+
+util.o: util.cpp.o
+
+.PHONY : util.o
+
+# target to build an object file
+util.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/myHttpServer_.dir/build.make CMakeFiles/myHttpServer_.dir/util.cpp.o
+.PHONY : util.cpp.o
+
+util.i: util.cpp.i
+
+.PHONY : util.i
+
+# target to preprocess a source file
+util.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/myHttpServer_.dir/build.make CMakeFiles/myHttpServer_.dir/util.cpp.i
+.PHONY : util.cpp.i
+
+util.s: util.cpp.s
+
+.PHONY : util.s
+
+# target to generate assembly for a file
+util.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/myHttpServer_.dir/build.make CMakeFiles/myHttpServer_.dir/util.cpp.s
+.PHONY : util.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -179,9 +287,21 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... myHttpServer_"
+	@echo "... Epoll.o"
+	@echo "... Epoll.i"
+	@echo "... Epoll.s"
+	@echo "... ThreadPool.o"
+	@echo "... ThreadPool.i"
+	@echo "... ThreadPool.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... requestData.o"
+	@echo "... requestData.i"
+	@echo "... requestData.s"
+	@echo "... util.o"
+	@echo "... util.i"
+	@echo "... util.s"
 .PHONY : help
 
 

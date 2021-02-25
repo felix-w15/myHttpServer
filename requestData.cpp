@@ -3,7 +3,7 @@
 //
 #include "requestData.h"
 #include "util.h"
-#include "epoll.h"
+#include "Epoll.h"
 #include <sys/epoll.h>
 #include <unistd.h>
 #include <sys/time.h>
@@ -13,11 +13,10 @@
 #include <sys/mman.h>
 #include <queue>
 #include <cstdlib>
-#include <opencv/cv.h>
-#include <opencv2/core/core.hpp>
-#include <opencv2/highgui/highgui.hpp>
-#include <opencv2/opencv.hpp>
 #include <string.h>
+#include <iostream>
+
+using namespace std;
 
 pthread_mutex_t MutexLockGuard::lock = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t MimeType::lock = PTHREAD_MUTEX_INITIALIZER;
@@ -52,7 +51,7 @@ std::string MimeType::getMime(const std::string &suffix) {
         return mime[suffix];
 }
 
-std::priority_queue<std::shared_ptr<mytimer>, std::deque<std::shared_ptr<mytimer>>, timerCmp> mytimerQueue;
+std::priority_queue<std::shared_ptr<mytimer>, std::deque<std::shared_ptr<mytimer>>, timerCmp> myTimerQueue;
 
 requestData::requestData():
     now_read_pos(0),
@@ -273,9 +272,9 @@ int requestData::analysisRequest()
             return ANALYSIS_ERROR;
         }
         cout << "content size ==" << content.size() << endl;
-        vector<char> data(content.begin(), content.end());
-        Mat test = imdecode(data, CV_LOAD_IMAGE_ANYDEPTH|CV_LOAD_IMAGE_ANYCOLOR);
-        imwrite("receive.bmp", test);
+//        vector<char> data(content.begin(), content.end());
+//        Mat test = imdecode(data, CV_LOAD_IMAGE_ANYDEPTH|CV_LOAD_IMAGE_ANYCOLOR);
+//        imwrite("receive.bmp", test);
         return ANALYSIS_SUCCESS;
     }
     else if (method == METHOD_GET)

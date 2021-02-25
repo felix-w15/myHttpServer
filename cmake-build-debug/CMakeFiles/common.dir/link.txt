@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcommon.a  CMakeFiles/common.dir/Epoll.cpp.o CMakeFiles/common.dir/ThreadPool.cpp.o CMakeFiles/common.dir/main.cpp.o CMakeFiles/common.dir/requestData.cpp.o CMakeFiles/common.dir/util.cpp.o
+/usr/bin/ranlib libcommon.a

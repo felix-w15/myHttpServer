@@ -3,4 +3,10 @@ project(myHttpServer_)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(myHttpServer_ main.cpp)
+
+#include_directories(.)
+
+add_executable(myHttpServer_ main.cpp Epoll.cpp ThreadPool.cpp util.cpp requestData.cpp)
+
+find_package(Threads REQUIRED)
+target_link_libraries(myHttpServer_ Threads::Threads)

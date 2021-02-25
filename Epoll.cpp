@@ -7,8 +7,13 @@
 #include "util.h"
 #include "requestData.h"
 
+#include <sys/epoll.h>
+#include <errno.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <string.h>
 #include <queue>
-#include <memory>
+#include <deque>
 
 int TIMER_TIME_OUT = 500;
 extern std::priority_queue<std::shared_ptr<mytimer>, std::deque<std::shared_ptr<mytimer>>, timerCmp> myTimerQueue;
@@ -23,6 +28,52 @@ int Epoll::epoll_init(int maxevents, int listen_num) {
     if(epoll_fd == -1)
         return -1;
     events = new epoll_event[maxevents];
+    return 0;
+}
+
+int Epoll::epoll_add(int fd, std::shared_ptr<requestData> request, __uint32_t events)
+{
+    struct epoll_event event;
+    event.data.fd = fd;
+    event.events = events;
+    if(epoll_ctl(epoll_fd, EPOLL_CTL_ADD, fd, &event) < 0)
+    {
+        perror("epoll_add error");
+        return -1;
+    }
+    fd2req[fd] = request;
+    return 0;
+}
+
+// 修改描述符状态
+int Epoll::epoll_mod(int fd, std::shared_ptr<requestData> request, __uint32_t events)
+{
+    struct epoll_event event;
+    event.data.fd = fd;
+    event.events = events;
+    if(epoll_ctl(epoll_fd, EPOLL_CTL_MOD, fd, &event) < 0)
+    {
+        perror("epoll_mod error");
+        return -1;
+    }
+    fd2req[fd] = request;
+    return 0;
+}
+
+// 从epoll中删除描述符
+int Epoll::epoll_del(int fd, __uint32_t events)
+{
+    struct epoll_event event;
+    event.data.fd = fd;
+    event.events = events;
+    if(epoll_ctl(epoll_fd, EPOLL_CTL_DEL, fd, &event) < 0)
+    {
+        perror("epoll_del error");
+        return -1;
+    }
+    auto fd_ite = fd2req.find(fd);
+    if (fd_ite != fd2req.end())
+        fd2req.erase(fd_ite);
     return 0;
 }
 
@@ -56,7 +107,8 @@ void Epoll::acceptConnection(int listen_fd, int epoll_fd, const std::string path
     while((accept_fd = accept(listen_fd, (struct sockaddr*)&client_addr, &client_addr_len)) > 0)
     {
 
-        cout << inet_addr(client_addr.sin_addr.s_addr) << endl;
+//        cout << inet_addr(client_addr.sin_addr.s_addr) << endl;
+        cout << inet_ntoa(*((struct in_addr*)client_addr.sin_addr.s_addr));
         cout << client_addr.sin_port << endl;
         /*
         // TCP的保活机制默认是关闭的
@@ -89,7 +141,7 @@ void Epoll::acceptConnection(int listen_fd, int epoll_fd, const std::string path
     //   perror("accept");
 }
 
-static std::vector<std::shared_ptr<requestData>> getEventsRequest(int listen_fd, int events_num, const std::string path){
+std::vector<std::shared_ptr<requestData>> Epoll::getEventsRequest(int listen_fd, int events_num, const std::string path){
     std::vector<std::shared_ptr<requestData>> req_data;
     for(int i = 0; i < events_num; ++i)
     {

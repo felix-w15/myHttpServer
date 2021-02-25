@@ -3,6 +3,8 @@
 //
 
 #include "ThreadPool.h"
+#include "requestData.h"
+#include <pthread.h>
 
 pthread_mutex_t ThreadPool::lock = PTHREAD_MUTEX_INITIALIZER;
 pthread_cond_t  ThreadPool::notify = PTHREAD_COND_INITIALIZER;
@@ -18,7 +20,7 @@ int ThreadPool::started = 0;
 
 int ThreadPool::threadpool_create(int _thread_count, int _queue_size) {
     bool err = false;
-    if(_thread_count <= 0 || _thread_count >= MAX_THREADS || _queue_size <= 0 || _queue_size >= MAX_QUEUE){
+    if(_thread_count <= 0 || _thread_count >= MAX_THREADS || _queue_size <= 0 || _queue_size > MAX_QUEUE){
         _thread_count = 4;
         _queue_size = 1024;
     }
@@ -31,9 +33,8 @@ int ThreadPool::threadpool_create(int _thread_count, int _queue_size) {
     queue.resize(_queue_size);
 
     for(int i = 0; i < _thread_count; i++){
-        if(pthread_create(&threads[i], NULL, threadpool_thread(), (void*)(0)) != 0){
+        if(pthread_create(&(threads[i]), 0, threadpool_thread, (void*)(0)) != 0)
             return -1;
-        }
         started++;
         thread_count++;
     }
@@ -89,7 +90,7 @@ void *ThreadPool::threadpool_thread(void *args){
         while(count == 0 && !shutdown)
             pthread_cond_wait(&notify, &lock);
         if((shutdown == immediate_shutdown) ||
-            (shutdown == gracefull_shutdown && count == 0))
+            (shutdown == graceful_shutdown && count == 0))
             break;
         task.fun = queue[head].fun;
         task.args = queue[head].args;

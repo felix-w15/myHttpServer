@@ -23,9 +23,9 @@ const int MAX_THREADS = 1024;
 const int MAX_QUEUE = 65535;
 
 
-typedef emum
+typedef enum
 {
-    imiate_shutdown = 1,
+    immediate_shutdown = 1,
     graceful_shutdown = 2
 } threadpool_shutdown_t;
 
@@ -34,7 +34,7 @@ struct ThreadPoolTask{
     std::shared_ptr<void> args;
 };
 
-void myHandle(std::shared_ptr<void> req);
+void myHandler(std::shared_ptr<void> req);
 class ThreadPool{
 private:
     static pthread_mutex_t lock;
@@ -50,7 +50,7 @@ private:
     static int started;
 public:
     static int threadpool_create(int _thread_count, int _queue_size);
-    static int threadpool_add(std::shared_ptr<void> args, std::function<void(std::shared_ptr<void>)> fun = myHandle())
+    static int threadpool_add(std::shared_ptr<void> args, std::function<void(std::shared_ptr<void>)> fun = myHandler);
     static int threadpool_destory();
     static int threadpool_free();
     static void *threadpool_thread(void *args);
